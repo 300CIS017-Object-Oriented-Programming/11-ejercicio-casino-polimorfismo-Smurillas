@@ -18,6 +18,8 @@ protected:
 
     float calcularResultado(float gonzosApostar) override;
 
+    void mostrarReglas() const;
+
 public:
     float jugar(float gonzosApostar) override;
 

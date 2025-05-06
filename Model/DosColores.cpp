@@ -57,3 +57,9 @@ DosColores::~DosColores() {
 
 }
 */
+void DosColores::mostrarReglas() const {
+    std::cout << "Reglas de ‘Dos Colores’:\n"
+              << "- Elige un color (Blanco o Negro) y un valor de dado (1–6).\n"
+              << "- Si aciertas color y número, ganas 4× tu apuesta.\n"
+              << "- Si sólo aciertas número, recibes 0.5×; si sólo color, empate; si fallas, pierdes todo.\n";
+}
