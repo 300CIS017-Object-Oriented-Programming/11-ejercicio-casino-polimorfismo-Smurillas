@@ -33,7 +33,7 @@ public:
     Casino();
     virtual ~Casino();
 
-    float convertirPesosAGonzos(float dinero);
+    static float convertirPesosAGonzos(float dinero);
     bool verExisteJugador(long id);
     void agregarJugador();
     void retirarJugador(long id);
