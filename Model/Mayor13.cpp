@@ -1,46 +1,38 @@
-//
-// Created by lufe0 on 7/05/2021.
-//
-
 #include "Mayor13.h"
 
+void Mayor13::mostrarReglas() const {
+    std::cout << "Reglas de 'El Mayor a 13':\n"
+              << "- Se genera un número aleatorio entre 1 y 13 para ti y para el casino.\n"
+              << "- Antes de ver el número del casino, puedes retirarte y perder la mitad de tu apuesta.\n"
+              << "- Si juegas y tu número > número del casino, ganas 2× tu apuesta; si no, pierdes todo.\n";
+}
+
 float Mayor13::jugar(float gonzosApostar) {
+    srand(static_cast<unsigned>(time(nullptr)));
+    numeroJugador = rand() % 13 + 1;
+
+    cout << "Tu número aleatorio es: " << numeroJugador << endl;
+    cout << "¿Deseas retirarte antes de ver el número del casino? (1=Sí, 2=No): ";
     int opcion;
-    float gonzosResultado;
-    float lowestResult = 0.5;
-    int numMaxRandom = 13;
-    int numMinRandom = 1;
-
-
-    srand(time(nullptr));
-    // para calcular numero aleatorio variable = limite_inferior + rand() % (limite_superior +1 - limite_inferior) ;
-    numeroJugador = numMinRandom + rand() % numMaxRandom;// numeros de 1 a 13
-    cout << "Tu numero aleatorio es: " << numeroJugador << endl;
-    cout << "Que desea hacer?" << endl;
-    cout << "1. Rendirse." << endl;
-    cout << "2. Jugar." << endl;
-    cout << "Opcion: ";
     cin >> opcion;
-
     if (opcion == 1) {
-        return lowestResult * gonzosApostar;
+        decidioRetirarse = true;
+        return -0.5f * gonzosApostar;
     }
 
-    // El jugador decidio jugar entonces calcula su numero
-    numeroCasino = numMinRandom + rand() % numMaxRandom;// numeros de 1 a 13
-    cout << "Numero casino: " << numeroCasino << endl;
-
-    gonzosResultado = calcularResultado(gonzosApostar);
-    return gonzosResultado;
+    numeroCasino = rand() % 13 + 1;
+    cout << "Número casino: " << numeroCasino << endl;
+    return calcularResultado(gonzosApostar);
 }
 
 float Mayor13::calcularResultado(float gonzosApostar) {
-
-    float maxResult = 2;
-    float lowestResult = 0;
-    if (numeroJugador > numeroCasino) {
-        return maxResult * gonzosApostar;
+    if (decidioRetirarse) {
+        return -0.5f * gonzosApostar;
+    } else if (numeroJugador > numeroCasino) {
+        return 2 * gonzosApostar;
     } else {
-        return lowestResult;
+        return -gonzosApostar;
     }
 }
+
+
