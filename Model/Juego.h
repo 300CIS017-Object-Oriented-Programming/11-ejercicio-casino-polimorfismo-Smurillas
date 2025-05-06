@@ -16,8 +16,8 @@ protected:
 
 public:
     Juego() = default;
-    virtual void mostrarReglas() const = 0;
     virtual ~Juego() {}
+    virtual void mostrarReglas() const = 0;
     virtual ~Juego() = default;
 
     virtual float jugar(float gonzosApostar) = 0;
