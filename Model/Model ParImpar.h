@@ -1,16 +1,21 @@
-#pragma once
+#ifndef CASINO_PARIMPAR_H
+#define CASINO_PARIMPAR_H
+
 #include "Juego.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class ParImpar : public Juego {
+protected:
+    float calcularResultado(float gonzosApostar) override;
+
 public:
+    ParImpar() { srand(static_cast<unsigned>(time(nullptr))); }
+    ~ParImpar() override = default;
+
+    float jugar(float gonzosApostar) override;
     void mostrarReglas() const override;
-    bool jugar(int apuesta) override;
 };
-//
-// Created by Santiago Murillas on 5/6/25.
-//
 
-#ifndef MODEL_PAR_IMPAR_H
-#define MODEL_PAR_IMPAR_H
-
-#endif //MODEL_PAR_IMPAR_H
+#endif // CASINO_PARIMPAR_H
