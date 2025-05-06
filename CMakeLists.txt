@@ -1,10 +1,23 @@
-cmake_minimum_required(VERSION 3.19)
-project(CASINO-Polimorfismo)
+cmake_minimum_required(VERSION 3.16)
+project(casino_polimorfismo)
 
-set(CMAKE_CXX_STANDARD 14)
+# Usar C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(
-        #Nombre del ejecutable
-        casino
-        #Lista de archivos a compilar en este target
-        main.cpp Model/Jugador.cpp View/View.cpp View/View.h Model/Casino.cpp Model/Casino.h Model/Juego.h Model/Mayor13.cpp Model/Mayor13.h Model/DosColores.cpp Model/DosColores.h Model/Slots.cpp Model/Slots.h)
+# Ejecutable y archivos fuente
+add_executable(casino_polimorfismo
+        main.cpp
+        View/View.cpp
+        Model/Casino.cpp
+        Model/DosColores.cpp
+        Model/Mayor13.cpp
+        Model/Slots.cpp
+        Model/Jugador.cpp
+        Model/ParImpar.cpp
+)
+
+# Directorio de inclusión para encontrar los headers
+target_include_directories(casino_polimorfismo PRIVATE
+        ${PROJECT_SOURCE_DIR}
+)
