@@ -44,3 +44,9 @@ float Mayor13::calcularResultado(float gonzosApostar) {
         return lowestResult;
     }
 }
+void Mayor13::mostrarReglas() const {
+    std::cout << "Reglas de ‘El Mayor de 13’:\n"
+              << "- El jugador recibe un número aleatorio entre 1 y 13.\n"
+              << "- Antes de que se genere el número de la casa, puede retirarse perdiendo la mitad de su apuesta.\n"
+              << "- Si juega y su número > número de la casa, gana 2× su apuesta; si no, la pierde.\n";
+}
