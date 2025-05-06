@@ -60,7 +60,10 @@ void Casino::agregarJugador() {
 }
 
 /* Este metodo de ejemplo delega los mensajes de error en la intaracción con la consola unicamente a la vista */
-
+// Ejemplo dentro de Casino::jugar()
+    std::cout << "Has elegido: " << listaJuegos[indice] << "\n";
+    juegos[indice]->mostrarReglas();    // <-- aquí
+    bool resultado = juegos[indice]->jugar(apuesta);
 float Casino::jugar(int idJuego, long idJugador, float gonzosApostar) {
     if (gonzosApostar < 1) {
         throw std::domain_error("Debe apostar al menos 1 gonzo\n");
